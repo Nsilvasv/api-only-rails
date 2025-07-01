@@ -1,0 +1,12 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  username: <%= ENV.fetch("POSTGRES_USER") { "" } %> # Substitua "myuser" pelo seu user padrão, como "postgres"
+  password: <%= ENV.fetch("POSTGRES_PASSWORD") { "" } %> # Substitua "mypassword" pela sua senha padrão
+  host: <%= ENV.fetch("POSTGRES_HOST") { "db" } %> # Melhor usar fetch também para o host
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+
+
+development:
+  <<: *default
+  database: api_rails_development
